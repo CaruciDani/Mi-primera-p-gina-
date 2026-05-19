@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotoTaxi Pro</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#111827;
+color:white;
+padding:20px;
+}
+.card{
+background:#1f2937;
+padding:20px;
+border-radius:20px;
+margin-bottom:20px;
+}
+button{
+background:#f97316;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+<h1>🏍️ MotoTaxi Pro</h1>
+
+<div class="card">
+<h2>Ingresos</h2>
+<p id="income">$0</p>
+<button onclick="addIncome()">Agregar ingreso</button>
+</div>
+
+<div class="card">
+<h2>Gastos</h2>
+<p id="expense">$0</p>
+<button onclick="addExpense()">Agregar gasto</button>
+</div>
+
+<div class="card">
+<h2>Balance</h2>
+<p id="balance">$0</p>
+</div>
+
+<script>
+let income = 0;
+let expense = 0;
+
+function updateBalance(){
+document.getElementById("balance").innerHTML =
+"$" + (income-expense).toFixed(2);
+}
+
+function addIncome(){
+let v = parseFloat(prompt("Monto"));
+if(!isNaN(v)){
+income += v;
+document.getElementById("income").innerHTML =
+"$" + income.toFixed(2);
+updateBalance();
+}
+}
+
+function addExpense(){
+let v = parseFloat(prompt("Monto"));
+if(!isNaN(v)){
+expense += v;
+document.getElementById("expense").innerHTML =
+"$" + expense.toFixed(2);
+updateBalance();
+}
+}
+</script>
+</body>
+</html>
